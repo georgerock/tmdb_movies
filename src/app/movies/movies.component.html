@@ -1,0 +1,17 @@
+<div>
+	<div id="selectHolder">
+		<label for="minRating" id="labelSelectRating"> Minimum rating </label>
+		<div class="select">
+			<select id="minRating" name="Minum rating" (change)="handleInputChanged()" [(ngModel)]="minRating">
+				<option *ngFor="let r of inputRange" [ngValue]=r> {{r}} </option>
+			</select>
+		</div>
+	</div>
+	<div class="container">
+		<div *ngFor="let movie of displayableMovies" class="movie">
+			<img src="{{imageUrl}}{{movie.poster_path}}" alt="" class="poster">
+		  	<h3 class="title">{{movie.title}}</h3>
+			<p class="genre"> {{movie.genres}} </p>
+		</div>
+	</div>
+</div>
