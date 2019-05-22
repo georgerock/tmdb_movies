@@ -52,15 +52,6 @@ export class MoviesComponent implements OnInit {
 	);
   }
 
-  getGenres(): void {
-	  this.movieService.getGenres()
-        .subscribe((genresList: GenreList) => {
-			this.genresList = genresList;
-			this.getMovies();
-		}
-	);
-  }
-
   handleInputChanged(): void {
 	  this.displayableMovies =
 	  		this.filterByMinimumRating(this.moviePage.results);
@@ -69,7 +60,12 @@ export class MoviesComponent implements OnInit {
   constructor(private movieService: MovieService) { }
 
   ngOnInit() {
-	  this.getGenres();
+	  this.movieService.getGenres()
+		  .subscribe((genresList: GenreList) => {
+			this.genresList = genresList;
+			this.getMovies();
+		}
+	);
   }
 
 }
